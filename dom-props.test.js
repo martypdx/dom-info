@@ -8,7 +8,6 @@ import { ariaAttributes } from 'aria-attributes';
 const removedElements = {
     applet: true,
     basefont: true,
-    // bad data:
     isindex: true,
 };
 
@@ -61,7 +60,6 @@ describe.each(tagsWithAttrs)('%s', tag => {
             link: ['color'],
             // just bad data:
             template: ['shadowrootdelegatesfocus'],
-
         };
 
         // mostly firefox, safari
