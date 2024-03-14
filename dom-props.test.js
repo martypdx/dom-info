@@ -24,7 +24,6 @@ test('no attribute tags', ({ expect }) => {
 });
 
 describe.each(tagsWithAttrs)('%s', tag => {
-    // describe.each(['a'])('%s', tag => {
     const el = document.createElement(tag);
 
     describe.each(htmlElementAttributes[tag])(`%s`, attr => {
@@ -74,14 +73,10 @@ describe.each(tagsWithAttrs)('%s', tag => {
             img: ['fetchpriority'],
         }
 
-        // this is it the spec, but no mention on mdn
-        const missingInFirefox = {
-        }
-
         const attrOnly = {
             // prop exists, but no effect
             template: ['shadowrootmode'],
-            // language is attr only
+            // language is attr only, no DOM prop
             script: ['language'],
         }
 
@@ -107,7 +102,6 @@ describe.each(tagsWithAttrs)('%s', tag => {
             if(removed[tag]?.includes(attr)) return;
             if(attrOnly[tag]?.includes(attr)) return;
             if(notYetImplemented[tag]?.includes(attr)) return;
-            if(missingInFirefox[tag]?.includes(attr)) return;
             const prop = corrections[attr] || el[info.property];
             expect(prop).not.toBe(undefined);
         });
@@ -116,7 +110,6 @@ describe.each(tagsWithAttrs)('%s', tag => {
 });
 
 describe.each(tags)('%s', tag => {
-    // describe.each(['a'])('%s', tag => {
     const el = document.createElement(tag);
 
     test('create', ({ expect }) => {
@@ -166,18 +159,6 @@ describe.each(tags)('%s', tag => {
             expect(attr.length).toBeGreaterThan(0);
             expect(info.defined).toBe(true);
         });
-
-        const corrections = {
-
-        }
-
-        const attrOnly = {
-
-        }
-
-        const notYetImplemented = {
-
-        }
 
         test(info.property, ({ expect }) => {
             if(attrOnly[attr] || notYetImplemented) return;
