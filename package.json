@@ -16,6 +16,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@webref/elements": "^2.3.0",
+        "@webref/idl": "^3.45.0",
         "aria-attributes": "^2.0.1",
         "html-element-attributes": "^3.3.0",
         "html-tag-names": "^2.1.0",
